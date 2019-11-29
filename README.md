@@ -1,57 +1,36 @@
 ## Programming Assignment: Writing a Shell
 
 
-## The goal of this assignment is to get everyone some familiarity with the system call
+ The goal of this assignment is to get everyone some familiarity with the system call interface. A secondary goal is to use some of the programming tools provided in the Unix environment. 
+In this assignment you are to implement a Unix shell program. A shell is simply a program that conveniently allows you to run other programs.
 
-## interface. A secondary goal is to use some of the programming tools provided in the Unix
+ Shell is a user interface between user and the internal of OS. So a shell's job is to intercept user's command and then trigger system calls to ask OS to accomplish  the user's tasks. 
+A shell mainly consists of two parts: parsing user requests and accomplishing user request with system calls' help.
 
-## environment. In this assignment you are to implement a Unix shell program. A shell is
+ In this assignment, you will write your own command shell to gain experience
 
-## simply a program that conveniently allows you to run other programs.
+ with some advanced programming techniques like process creation and control, file descriptors, signals and possibly pipes.
 
-# Shell is a user interface between user and the internal of OS. So a shell's job is to
+ Each entered command is either a word containing the letters, numbers,. , and /,
 
-# intercept user's command and then trigger system calls to ask OS to accomplish
-
-# the user's tasks. A shell mainly consists of two parts: parsing user requests and
-
-# accomplishing user request with system calls' help.
-
-# In this assignment, you will write your own command shell to gain experience
-
-# with some advanced programming techniques like process creation and control,
-
-# file descriptors, signals and possibly pipes.
-
-# Each entered command is either a word containing the letters, numbers,. , and /,
-
-# or a single character string containing one of the special characters: < > | &.
+ or a single character string containing one of the special characters: < > | &.
 
 ## Your shell must support the following:
 
-# (1) A built-in command is one for which no new process is created but instead the
-
-# functionality is build directly into the shell itself. You should support the
-
-# following built-in commands: jobs, cd, and exit.
+# (1) A built-in command is one for which no new process is created but instead the functionality is built directly into the shell itself. You should support the following built-in commands: jobs, cd, and exit.
 
 # a. jobs provide a numbered list of processes currently executing in the
 
 # background.
-
-# Try waitpid with WNOHANG option to check without blocking. You can
-
-# either check when jobs called or each time through the main while loop.
+Try waitpid with WNOHANG option to check without blocking. You can either check when jobs called or each time through the main while loop.
 
 # b. cd should change the working directory.
 
 # c. exit should terminate your shell process.
 
-# External commands: which requires forking new process and executing
+# External commands: which requires forking new process and executing command.
 
-# command.
-
-# Your shell must support the following:
+ Your shell must support the following:
 
 ## a. A command with no arguments
 
@@ -110,19 +89,13 @@
 
 ## System calls: freopen()
 
-## f. A command, with or without arguments, whose output is piped to the input of
-
-## another command.
+## f. A command, with or without arguments, whose output is piped to the input of another command.
 
 ## Example: ls -l | more
 
-## Details: This takes the output of the first command and makes it the input to the
+## Details: This takes the output of the first command and makes it the input to the second command
 
-## second command
-
-## Concepts: Pipes, synchronous operation
-
-## System calls: pipe()
+## Concepts: Pipes, synchronous operation System calls: pipe()
 
 ## Note: You must check and correctly handle all return values. This means that you need to read
 
